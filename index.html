@@ -552,7 +552,23 @@
     @media (prefers-reduced-motion: reduce) {
       #constellation-canvas { display: none; }
     }
-  </style>
+  
+.interest-caption {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.interest-card-body {
+  padding: 0 0 0.75rem 0;
+  text-align: center;
+}
+
+.interest-card-body p { display:none; }
+
+</style>
 </head>
 <body>
 
@@ -581,7 +597,7 @@
       <h1>Gabe Flanagin</h1>
       <p class="hero-title">M.S. Student in Mathematics at Western Washington University</p>
       <p class="hero-bio">
-        I am a mathematics graduate student at Western Washington University interested in optimization, PDEs, and numerical analysis. My current work focuses on computational methods for PDE-constrained optimization and interface problems, with broader interests in geometry-aware algorithms and applications in the physical sciences. 
+        I am a mathematics graduate student at Western Washington University interested in scientific computing, numerical analysis, and partial differential equations. My current work focuses on computational methods for PDE-constrained optimization and interface problems, with broader interests in geometry-aware algorithms and applications in the physical sciences. 
       </p>
       <div class="contact-row" id="contact">
         <a class="contact-item" href="mailto:flanagg@wwu.edu">
@@ -614,7 +630,7 @@
         <span class="tag">Optimization</span>
         <span class="tag">Numerical Analysis</span>
         <span class="tag">Scientific Computing</span>
-        <span class="tag">Geometry-Informed Modeling</span>
+        <span class="tag">Geometric Analysis</span>
       </div>
     </div>
 
@@ -642,34 +658,6 @@
 
 </div><!-- end .top-layout -->
 
-
-<!-- Ongoing Work -->
-<section id="research-projects">
-  <div class="section-label">Current Research</div>
-  <div class="entry-list">
-
-<div class="entry">
-  <div class="entry-type">Ongoing Research</div>
-  <div class="entry-title">Terrain-Aware Reaction–Diffusion Models and Optimal Control of Infectious Diseases in Wildlife</div>
-  <div class="entry-meta">Mathematical modeling, numerical PDEs, and optimal control</div>
-  <div class="entry-desc"> 
-    Developing reaction–diffusion models for infectious disease spread in wildlife populations with terrain-influenced movement, in collaboration with graduate student Alex Escoto. 
-    Current work investigates computational methods for domains with complex topography and heterogeneous land cover, as well as control strategies for limiting disease spread, including culling, vaccination, and predator introduction.
-  </div>
-</div>
-
-<div class="entry">
-  <div class="entry-type">Ongoing Research</div>
-  <div class="entry-title">Boundary Integral Methods for Interface Problems</div>
-  <div class="entry-meta">Scientific computing and numerical PDEs</div>
-  <div class="entry-desc">
-    Investigating boundary integral methods for elliptic interface problems, with applications to electrostatic models and PDEs on complex geometries. Current work focuses on numerical implementation, validation, and analysis of interface formulations.
-  </div>
-</div>
-
-  </div>
-</section>
-
   <!-- Publications -->
   <section id="publications">
     <div class="section-label">Selected Publications</div>
@@ -677,10 +665,9 @@
 
       <div class="entry">
         <div class="entry-type">Journal Article</div>
-        <div class="entry-title">Rationalizing Patterns in the Cation Ordering, Geometric Distortion, and Electronic Properties of a Class of I–V–VI₂ Chalcogenide Semiconductors</div>
+        <div class="entry-title">Rationalizing Patterns in the Cation Ordering, Geometric Distortion, and Electronic Properties of a Class of I–V–VI_2 Chalcogenide Semiconductors</div>
         <div class="entry-meta">Gabe Flanagin, Robert Berger · <em>The Journal of Physical Chemistry C</em> · 2026</div>
-        <div class="entry-desc">First-author study using density functional theory to investigate the structural and electronic properties of I–V–VI₂ chalcogenide semiconductors. 
-          Develops a novel model relating local bonding motifs and electronic properties to the global geometric structure arising from different cation orderings.
+        <div class="entry-desc">First-author study using density functional theory to investigate structural and electronic properties of I–V–VI₂ chalcogenide semiconductors. Introduces a model linking bonding motifs and material properties to the geometric structure of cation ordering.
           <a class="entry-link" href="https://pubs.acs.org/doi/10.1021/acs.jpcc.5c05853" target="_blank" rel="noopener">Full Article →</a>
         </div>
       </div>
@@ -710,17 +697,19 @@
         <div class="entry-type">Senior Project Presentation</div>
         <div class="entry-title">Using Max-Plus Algebra to Compute Reachability in Dynamic Systems</div>
         <div class="entry-meta">Gabe Flanagin, advised by Rick Barnard · WWU Mathematics Scholars Week · May 2025</div>
-        <div class="entry-desc">Studied and implemented a max-plus algebra based algorithm for approximating solutions to Hamilton–Jacobi–Bellman equations. 
-          Proved the method is applicable to a broader class of functions than previously shown and generalized semiconvexity results underlying the approach.
+        <div class="entry-desc">Gave an introduction to reaction-diffusion based models used to study the spatial spread of infectious diseases in wildlife. 
+          Studied and implemented a max-plus algebra based algorithm for approximating the solution of Hamilton-Jacobi-Bellman PDEs.
+          Proved the algorithm is applicable to a broader class of functions than previously shown, and generalized semiconvexity theorems core to the method.
         </div>
       </div>
       
       <div class="entry">
         <div class="entry-type">Poster Presentation</div>
-        <div class="entry-title">Investigating the Atomic Ordering, Chemical Bonding, and Electronic Structure of a Class of ABX₂ Semiconductors for Solar Energy Conversion</div>
-        <div class="entry-meta">Gabe Flanagin, advised by Robert Berger · WWU Scholars Week Poster Session · May 2025</div>
-        <div class="entry-desc">Presented work investigating atomic ordering, chemical bonding, and electronic structure in a class of ABX₂ semiconductors for solar energy conversion. 
-          The project used density functional theory to study how geometric structure influences electronic properties and material behavior.
+        <div class="entry-title">Investigating the Atomic Ordering, Chemical Bonding, and Electronic Structure of a Class of ABX_2 Semiconductors for Solar Energy Conversion</div>
+        <div class="entry-meta">Gabe Flanagin · WWU Scholars Week Poster Session · May 2025</div>
+        <div class="entry-desc">Gave an introduction to reaction-diffusion based models used to study the spatial spread of infectious diseases in wildlife. 
+          Studied and implemented a max-plus algebra based algorithm for approximating the solution of Hamilton-Jacobi-Bellman PDEs.
+          Proved the algorithm is applicable to a broader class of functions than previously shown, and generalized semiconvexity theorems core to the method.
         </div>
       </div>      
 
@@ -750,64 +739,36 @@
   -->
 
 
-  <!-- Teaching --> 
-  <section id="teaching">
-    <div class="section-label">Teaching</div>
-    <div class="entry-list">
-
-  <div class="entry">
-    <div class="entry-title">Teaching Assistant — MATH 115: Precalculus II</div>
-    <div class="entry-meta">Western Washington University · Spring 2026</div>
-  </div>
-
-  <div class="entry">
-    <div class="entry-title">TA Liaison — MATH 114: Precalculus I</div>
-    <div class="entry-meta">Western Washington University · Winter 2026</div>
-  </div>
-
-  <div class="entry">
-    <div class="entry-title">Teaching Assistant — MATH 112: Functions & Algebraic Methods</div>
-    <div class="entry-meta">Western Washington University · Fall 2025</div>
-  </div>
-
-    </div>
-  </section>
-
-
     <!-- Hobbies & Passions -->
   <section id="hobbies">
-    <div class="section-label">Other Things I Enjoy</div>
+    <div class="section-label">Outside of Mathematics</div>
     <div class="interest-grid">
 
-      <div class="interest-card">
-        <img src="slack.gif" class="interest-card-photo" alt=Slacklining"">
-        <div class="interest-card-body">
-          <h3>Slacklining</h3>
-          <p>Walking and doing tricks on a piece of webbing tied between trees. Sometimes harnessed in above a cliff!</p>
-        </div>
+      
+<div class="interest-card">
+        <div class="interest-card-body"><h3>Slacklining</h3></div>
+        <img src="slack.gif" class="interest-card-photo" alt="">
+        <div class="interest-caption">Balancing on a 1-inch webbing suspended above the ground.</div>
       </div>
 
       <div class="interest-card">
-        <img src="posters.png" class="interest-card-photo" alt=Poster I made"">
-        <div class="interest-card-body">
-          <span class="interest-icon"></span>
-          <h3>Music</h3>
-          <p>I listen to lots of music and love going to raves, festivals, and concerts. A song I currently like a lot is "Albino" by [KRTM].</p>
-        </div>
-      </div>
-
-      <h3>Yoga</h3>
-      <div class="hobby-image-wrapper">
-        <img src="IMG3.jpg" class="hobby-image" alt=Attempting the splits="">
+        <div class="interest-card-body"><h3>Music</h3></div>
+        <img src="posters.png" class="interest-card-photo" alt="">
+        <div class="interest-caption">Enjoy live electronic music, festivals, and discovering new artists.</div>
       </div>
 
       <div class="interest-card">
-        <img src="pup.gif" class="interest-card-photo" alt=A move I invented"">
-        <div class="interest-card-body">
-          <h3>Flow Arts</h3>
-          <p>Spinning things.</p>
-        </div>
+        <div class="interest-card-body"><h3>Yoga</h3></div>
+        <img src="IMG3.jpg" class="interest-card-photo" alt="">
+        <div class="interest-caption">Enjoy mobility training and long-term flexibility work.</div>
       </div>
+
+      <div class="interest-card">
+        <div class="interest-card-body"><h3>Flow Arts</h3></div>
+        <img src="pup.gif" class="interest-card-photo" alt="">
+        <div class="interest-caption">Practice rope dart, poi, and other forms of prop manipulation.</div>
+      </div>
+
 
     </div>
   </section>
