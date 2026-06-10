@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabe Flanagin — Academic Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Design tokens ─────────────────────────────────────── */
+    :root {
+      --bg:          #130820;
+      --bg-card:     #1E1035;
+      --bg-hover:    #261445;
+      --purple-deep: #2D1B5E;
+      --accent:      #7C3AED;
+      --accent-soft: #9D5FF5;
+      --lavender:    #C4A8FF;
+      --text:        #EDE8F5;
+      --text-muted:  #9585B4;
+      --divider:     #2E1E55;
+      --tag-bg:      #2A1552;
+      --tag-border:  #4A2A8A;
+      --mono:        'JetBrains Mono', monospace;
+      --serif:       'Playfair Display', Georgia, serif;
+      --sans:        'Inter', system-ui, sans-serif;
+    }
+
+    /* ── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── Canvas background ─────────────────────────────────── */
+    #constellation-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    /* ── Layout wrapper ────────────────────────────────────── */
+    .site-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Nav ────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(19, 8, 32, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--lavender);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--lavender); }
+
+    /* ── Hero ───────────────────────────────────────────────── */
+    .hero {
+      display: flex;
+      align-items: flex-start;
+      gap: 2.5rem;
+      padding: 5rem 0 3.5rem;
+    }
+
+    .hero-photo-wrap {
+      flex-shrink: 0;
+    }
+
+    .hero-photo {
+      width: 150px;
+      height: 190px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 28px rgba(124, 58, 237, 0.35);
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .photo-placeholder {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 28px rgba(124, 58, 237, 0.35);
+      background: var(--purple-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-placeholder svg {
+      width: 52px;
+      height: 52px;
+      opacity: 0.45;
+    }
+
+    .hero-info { flex: 1; padding-top: 0.25rem; }
+
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-title {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+      font-weight: 400;
+    }
+
+    .hero-bio {
+      font-size: 0.95rem;
+      color: var(--text);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 1.4rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem 1.4rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-item:hover { color: var(--lavender); }
+
+    .contact-item svg {
+      width: 14px; height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ── Section shared ─────────────────────────────────────── */
+    section { padding: 2.5rem 0; border-top: 1px solid var(--divider); }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: var(--lavender);
+      margin-bottom: 1.4rem;
+      line-height: 1.2;
+    }
+
+    /* ── Research interests ─────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      padding: 0.3rem 0.8rem;
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      border-radius: 3px;
+      color: var(--lavender);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Education timeline ─────────────────────────────────── */
+    .edu-list { display: flex; flex-direction: column; gap: 1.4rem; }
+
+    .edu-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 0 1.4rem;
+      align-items: baseline;
+    }
+
+    .edu-year {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-align: right;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .edu-body {}
+
+    .edu-degree {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+
+    .edu-institution {
+      font-size: 0.88rem;
+      color: var(--accent-soft);
+      margin-bottom: 0.15rem;
+    }
+
+    .edu-detail {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ── Publication / presentation entries ────────────────── */
+    .entry-list { display: flex; flex-direction: column; gap: 1.6rem; }
+
+    .entry {
+      padding: 1.2rem 1.4rem;
+      background: var(--bg-card);
+      border: 1px solid var(--divider);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .entry:hover {
+      background: var(--bg-hover);
+      border-left-color: var(--accent-soft);
+    }
+
+    .entry-type {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 0.35rem;
+    }
+
+    .entry-title {
+      font-family: var(--serif);
+      font-size: 1.0rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+      line-height: 1.35;
+    }
+
+    .entry-meta {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      font-style: italic;
+    }
+
+    .entry-desc {
+      font-size: 0.87rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .entry-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .entry-link {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .entry-link:hover {
+      color: var(--lavender);
+      border-bottom-color: var(--lavender);
+    }
+
+    /* ── Skills / methods ───────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-group {}
+
+    .skill-group-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-items {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--divider);
+      padding: 2.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-left {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-right a {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--accent-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-right a:hover { color: var(--lavender); }
+
+    /* ── Utilities ──────────────────────────────────────────── */
+    .placeholder-note {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      background: rgba(124, 58, 237, 0.08);
+      border: 1px dashed rgba(124, 58, 237, 0.3);
+      border-radius: 4px;
+      padding: 0.9rem 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* ── Top layout: hero left, sidebar right ───────────── */
+    .top-layout {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 0 3rem;
+      align-items: start;
+      padding-top: 4.5rem;
+      padding-bottom: 0;
+    }
+
+    .top-layout .hero {
+      padding: 0 0 2.5rem;
+      border: none;
+    }
+
+    .top-sidebar {
+      padding-top: 0.25rem;
+    }
+
+    .sidebar-block {
+      padding: 1.8rem 0 1.5rem;
+      border-top: 1px solid var(--divider);
+    }
+
+    .sidebar-block:first-child {
+      padding-top: 0;
+      border-top: none;
+    }
+
+    /* ── Hobby cards ─────────────────────────────────────── */
+    .interest-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .interest-card {
+      background: var(--bg-card);
+      border: 1px solid var(--divider);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: background 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .interest-card:hover {
+      background: var(--bg-hover);
+      transform: translateY(-2px);
+    }
+
+    .interest-card-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+    }
+
+    .interest-card-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--purple-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+    }
+
+    .interest-card-body {
+      padding: 1rem 1.1rem 1.1rem;
+      flex: 1;
+    }
+
+    .interest-icon {
+      font-size: 1.3rem;
+      margin-bottom: 0.45rem;
+      display: block;
+    }
+
+    .interest-card h3 {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .interest-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ── Photo grid ──────────────────────────────────────── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .top-layout {
+        grid-template-columns: 1fr;
+        padding-top: 3rem;
+      }
+      .top-sidebar { border-top: 1px solid var(--divider); padding-top: 1.5rem; }
+      .sidebar-block:first-child { border-top: none; }
+      h1 { font-size: 2rem; }
+      .hero { padding: 0 0 1.5rem; }
+      .interest-grid { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .edu-item { grid-template-columns: 1fr; }
+      .edu-year { text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #constellation-canvas { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="constellation-canvas" aria-hidden="true"></canvas>
+
+<!-- ── Navigation ─────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">Gabe Flanagin</span>
+
+  </div>
+</nav>
+
+<!-- ── Page content ───────────────────────────────────── -->
+<div class="site-wrapper">
+
+<!-- ── Top layout: profile left, sidebar right ─────────── -->
+<div class="top-layout">
+
+  <!-- Hero / Profile -->
+  <div class="hero">
+    <div class="hero-photo-wrap">
+      <img src="IMG6.jpg" alt="" class="hero-photo">
+    </div>
+    <div class="hero-info">
+      <h1>Gabe Flanagin</h1>
+      <p class="hero-title">M.S. Student in Mathematics at Western Washington University</p>
+      <p class="hero-bio">
+        I am a mathematics graduate student at Western Washington University interested in scientific computing, numerical analysis, and partial differential equations. My current work focuses on computational methods for PDE-constrained optimization and interface problems, with broader interests in geometry-aware algorithms and applications in the physical sciences. 
+      </p>
+      <div class="contact-row" id="contact">
+        <a class="contact-item" href="mailto:flanagg@wwu.edu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          flanagg@wwu.edu
+        </a>
+        <a class="contact-item" href="Gabe_Flanagin_CV.pdf" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          CV
+        </a>
+        <a class="contact-item" href="https://scholar.google.com/citations?user=2u-ClYcAAAAJ&hl=en" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Google Scholar
+        </a>
+        <a class="contact-item" href="https://github.com/gflanagin" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar: Research Interests + Education -->
+  <div class="top-sidebar">
+
+    <div class="sidebar-block" id="research">
+      <div class="section-label">Research Interests</div>
+      <div class="tags">
+        <span class="tag">PDEs</span>
+        <span class="tag">Optimization</span>
+        <span class="tag">Numerical Analysis</span>
+        <span class="tag">Scientific Computing</span>
+        <span class="tag">Geometric Analysis</span>
+      </div>
+    </div>
+
+    <div class="sidebar-block" id="education">
+      <div class="section-label">Education</div>
+      <div class="edu-list">
+        <div class="edu-item">
+          <div class="edu-year">2025 – Present</div>
+          <div class="edu-body">
+            <div class="edu-degree">M.S. in Mathematics</div>
+            <div class="edu-institution">Western Washington University, Bellingham, WA</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-year">2021 – 2025</div>
+          <div class="edu-body">
+            <div class="edu-degree">B.S. in Mathematics</div>
+            <div class="edu-institution">Western Washington University, Bellingham, WA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- end .top-layout -->
+
+
+<!-- Ongoing Work -->
+<section id="research-projects">
+  <div class="section-label">Current Research</div>
+  <div class="entry-list">
+
+<div class="entry">
+  <div class="entry-type">Ongoing Research</div>
+  <div class="entry-title">Terrain-Aware Reaction–Diffusion Models and Optimal Control for Wildlife Disease Spread</div>
+  <div class="entry-meta">Collaborative research in mathematical biology, numerical PDEs, and optimal control</div>
+  <div class="entry-desc"> 
+    Developing reaction–diffusion and optimal control models for wildlife rabies spread on complex domains where terrain influences animal movement. Current work investigates computational methods for heterogeneous domains and control strategies for limiting disease spread.
+  </div>
+</div>
+
+<div class="entry">
+  <div class="entry-type">Ongoing Research</div>
+  <div class="entry-title">Boundary Integral Methods for Interface Problems</div>
+  <div class="entry-meta">Scientific computing and numerical PDEs</div>
+  <div class="entry-desc">
+    Investigating boundary integral formulations for elliptic interface problems, with applications to electrostatic models and PDEs on complex geometries.Current work focuses on numerical implementation, validation, and analysis of interface formulations.
+  </div>
+</div>
+
+  </div>
+</section>
+
+  <!-- Publications -->
+  <section id="publications">
+    <div class="section-label">Selected Publications</div>
+    <div class="entry-list">
+
+      <div class="entry">
+        <div class="entry-type">Journal Article</div>
+        <div class="entry-title">Rationalizing Patterns in the Cation Ordering, Geometric Distortion, and Electronic Properties of a Class of I–V–VI₂ Chalcogenide Semiconductors</div>
+        <div class="entry-meta">Gabe Flanagin, Robert Berger · <em>The Journal of Physical Chemistry C</em> · 2026</div>
+        <div class="entry-desc">First-author study using density functional theory to investigate structural and electronic properties of I–V–VI₂ chalcogenide semiconductors. Introduces a model linking bonding motifs and material properties to the geometric structure of cation ordering.
+          <a class="entry-link" href="https://pubs.acs.org/doi/10.1021/acs.jpcc.5c05853" target="_blank" rel="noopener">Full Article →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Presentations -->
+  <section id="presentations">
+    <div class="section-label">Talks & Presentations</div>
+    <div class="entry-list">
+
+      <div class="entry">
+        <div class="entry-type">WWU Mathematics Colloquium Talk</div>
+        <div class="entry-title">An Introduction to Spatiotemporal Rabies Models</div>
+        <div class="entry-meta">Gabe Flanagin & Alex Escoto · WWU Mathematics Colloquium Series · April 2026</div>
+        <div class="entry-desc">Gave an introduction to reaction-diffusion based models used to study the spatial spread of infectious diseases in wildlife. 
+          Also introduced and numerically solved optimal control problems trying to minimize the spread of such diseases. 
+          Currently working with collaborator to submit novel results which generalize these models to complex domains with terrain that influences animal movement.                            
+        </div>
+        <div class="entry-links">
+          <a class="entry-link" href="https://mathematics.wwu.edu/colloquium/spring-2026/alex-escoto-and-gabe-flanagin" target="_blank" rel="noopener">Flyer →</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-type">Senior Project Presentation</div>
+        <div class="entry-title">Using Max-Plus Algebra to Compute Reachability in Dynamic Systems</div>
+        <div class="entry-meta">Gabe Flanagin, advised by Rick Barnard · WWU Mathematics Scholars Week · May 2025</div>
+        <div class="entry-desc">Studied and implemented a max-plus algebra based algorithm for approximating solutions to Hamilton–Jacobi–Bellman equations. 
+          Proved the method is applicable to a broader class of functions than previously shown and generalized semiconvexity results underlying the approach.
+        </div>
+      </div>
+      
+      <div class="entry">
+        <div class="entry-type">Poster Presentation</div>
+        <div class="entry-title">Investigating the Atomic Ordering, Chemical Bonding, and Electronic Structure of a Class of ABX₂ Semiconductors for Solar Energy Conversion</div>
+        <div class="entry-meta">Gabe Flanagin · WWU Scholars Week Poster Session · May 2025</div>
+        <div class="entry-desc">Presented work investigating atomic ordering, chemical bonding, and electronic structure in a class of ABX₂ semiconductors for solar energy conversion. 
+          The project used density functional theory to study how geometric structure influences electronic properties and material behavior.
+        </div>
+      </div>      
+
+    </div>
+  </section>
+
+
+  <!-- Honors & Awards -->
+  <!--
+  <section id="awards">
+    <div class="section-label">Honors & Awards</div>
+    <div class="entry-list">
+      <div class="entry">
+        <div class="entry-type">Fellowship · 2024</div>
+        <div class="entry-title">Name of Fellowship or Award</div>
+        <div class="entry-meta">Awarding Institution or Organization</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-type">Award · 2023</div>
+        <div class="entry-title">Award Name</div>
+        <div class="entry-meta">Awarding Institution or Organization</div>
+      </div>
+
+    </div>
+  </section>
+  -->
+
+
+  <!-- Teaching --> 
+  <section id="teaching">
+    <div class="section-label">Teaching</div>
+    <div class="entry-list">
+
+  <div class="entry">
+    <div class="entry-title">Teaching Assistant — MATH 115: Precalculus II</div>
+    <div class="entry-meta">Western Washington University · Spring 2026</div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-title">TA Liaison — MATH 114: Precalculus I</div>
+    <div class="entry-meta">Western Washington University · Winter 2026</div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-title">Teaching Assistant — MATH 112: Functions & Algebraic Methods</div>
+    <div class="entry-meta">Western Washington University · Fall 2025</div>
+  </div>
+
+    </div>
+  </section>
+
+
+    <!-- Hobbies & Passions -->
+  <section id="hobbies">
+    <div class="section-label">Other Things I Enjoy</div>
+    <div class="interest-grid">
+
+      <div class="interest-card">
+        <img src="slack.gif" class="interest-card-photo" alt="">
+        <div class="interest-card-body">
+          <h3>Slacklining</h3>
+          <p>Walking and doing tricks on a piece of webbing roped between two trees. Sometimes harnessed in above a cliff!</p>
+        </div>
+      </div>
+
+      <div class="interest-card">
+        <img src="posters.png" class="interest-card-photo" alt="">
+        <div class="interest-card-body">
+          <span class="interest-icon"></span>
+          <h3>Music</h3>
+          <p>I listen to lots of music and love going to raves, festivals, and concerts. A song I currently like a lot is "Albino" by [KRTM].</p>
+        </div>
+      </div>
+
+      <div class="interest-card">
+        <img src="IMG3.jpg" class="interest-card-photo" alt="">
+        <div class="interest-card-body">
+          <h3>Yoga</h3>
+          <p>Almost have the splits...</p>
+        </div>
+      </div>
+
+      <div class="interest-card">
+        <img src="pup.gif" class="interest-card-photo" alt="">
+        <div class="interest-card-body">
+          <h3>Flow Arts</h3>
+          <p>Spinning things.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-left">Last updated: June 2026</div>
+    <div class="footer-right"></div>
+  </footer>
+
+</div>
+
+<!-- ── Constellation animation ────────────────────────── -->
+<script>
+  const canvas = document.getElementById('constellation-canvas');
+  const ctx = canvas.getContext('2d');
+
+  let W, H, dots = [];
+  const N = 55, MAX_DIST = 140;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function init() {
+    resize();
+    dots = Array.from({ length: N }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.18,
+      vy: (Math.random() - 0.5) * 0.18,
+      r: Math.random() * 1.5 + 0.5,
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Move dots
+    for (const d of dots) {
+      d.x += d.vx;
+      d.y += d.vy;
+      if (d.x < 0 || d.x > W) d.vx *= -1;
+      if (d.y < 0 || d.y > H) d.vy *= -1;
+    }
+
+    // Draw edges
+    for (let i = 0; i < dots.length; i++) {
+      for (let j = i + 1; j < dots.length; j++) {
+        const dx = dots[i].x - dots[j].x;
+        const dy = dots[i].y - dots[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MAX_DIST) {
+          const alpha = (1 - dist / MAX_DIST) * 0.25;
+          ctx.beginPath();
+          ctx.moveTo(dots[i].x, dots[i].y);
+          ctx.lineTo(dots[j].x, dots[j].y);
+          ctx.strokeStyle = `rgba(157, 95, 245, ${alpha})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Draw dots
+    for (const d of dots) {
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(196, 168, 255, 0.5)';
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => { resize(); });
+  init();
+  draw();
+</script>
+
+</body>
+</html>
