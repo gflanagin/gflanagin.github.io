@@ -86,31 +86,12 @@
       letter-spacing: 0.02em;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active { color: var(--lavender); }
-
     /* ── Hero ───────────────────────────────────────────────── */
     .hero {
       display: flex;
       align-items: flex-start;
       gap: 2.5rem;
-      padding: 5rem 0 3.5rem;
+      padding: 4.5rem 0 0;
     }
 
     .hero-photo-wrap {
@@ -124,41 +105,9 @@
       object-fit: cover;
       border: 2px solid var(--accent);
       box-shadow: 0 0 28px rgba(124, 58, 237, 0.35);
-      background: var(--bg-card);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .photo-placeholder {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 28px rgba(124, 58, 237, 0.35);
-      background: var(--purple-deep);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .photo-placeholder svg {
-      width: 52px;
-      height: 52px;
-      opacity: 0.45;
     }
 
     .hero-info { flex: 1; padding-top: 0.25rem; }
-
-    .hero-eyebrow {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent-soft);
-      margin-bottom: 0.5rem;
-    }
 
     h1 {
       font-family: var(--serif);
@@ -179,7 +128,7 @@
     .hero-bio {
       font-size: 0.95rem;
       color: var(--text);
-      max-width: 520px;
+      max-width: 680px;
       line-height: 1.75;
       margin-bottom: 1.4rem;
     }
@@ -208,6 +157,18 @@
       flex-shrink: 0;
     }
 
+    /* ── Inline sections under hero ─────────────────────────── */
+    .hero-inline-sections {
+      margin-top: 1.6rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-inline-block {
+      padding: 1.4rem 0 1.2rem;
+      border-top: 1px solid var(--divider);
+    }
+
     /* ── Section shared ─────────────────────────────────────── */
     section { padding: 2.5rem 0; border-top: 1px solid var(--divider); }
 
@@ -229,7 +190,7 @@
       line-height: 1.2;
     }
 
-    /* ── Research interests ─────────────────────────────────── */
+    /* ── Tags ─────────────────────────────────────────────── */
     .tags {
       display: flex;
       flex-wrap: wrap;
@@ -266,8 +227,6 @@
       white-space: nowrap;
     }
 
-    .edu-body {}
-
     .edu-degree {
       font-family: var(--serif);
       font-size: 1rem;
@@ -282,13 +241,7 @@
       margin-bottom: 0.15rem;
     }
 
-    .edu-detail {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-
-    /* ── Publication / presentation entries ────────────────── */
+    /* ── Entries ────────────────────────────────────────────── */
     .entry-list { display: flex; flex-direction: column; gap: 1.6rem; }
 
     .entry {
@@ -358,98 +311,6 @@
       border-bottom-color: var(--lavender);
     }
 
-    /* ── Skills / methods ───────────────────────────────────── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-
-    .skill-group {}
-
-    .skill-group-label {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent-soft);
-      margin-bottom: 0.5rem;
-    }
-
-    .skill-items {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.9;
-    }
-
-    /* ── Footer ─────────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--divider);
-      padding: 2.5rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .footer-left {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      letter-spacing: 0.04em;
-    }
-
-    .footer-right a {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--accent-soft);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-right a:hover { color: var(--lavender); }
-
-    /* ── Utilities ──────────────────────────────────────────── */
-    .placeholder-note {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--accent);
-      background: rgba(124, 58, 237, 0.08);
-      border: 1px dashed rgba(124, 58, 237, 0.3);
-      border-radius: 4px;
-      padding: 0.9rem 1.1rem;
-      line-height: 1.6;
-    }
-
-    /* ── Top layout: hero left, sidebar right ───────────── */
-    .top-layout {
-      display: grid;
-      grid-template-columns: 1fr 260px;
-      gap: 0 3rem;
-      align-items: start;
-      padding-top: 4.5rem;
-      padding-bottom: 0;
-    }
-
-    .top-layout .hero {
-      padding: 0 0 2.5rem;
-      border: none;
-    }
-
-    .top-sidebar {
-      padding-top: 0.25rem;
-    }
-
-    .sidebar-block {
-      padding: 1.8rem 0 1.5rem;
-      border-top: 1px solid var(--divider);
-    }
-
-    .sidebar-block:first-child {
-      padding-top: 0;
-      border-top: none;
-    }
-
     /* ── Hobby cards ─────────────────────────────────────── */
     .interest-grid {
       display: grid;
@@ -498,12 +359,6 @@
       flex: 1;
     }
 
-    .interest-icon {
-      font-size: 1.3rem;
-      margin-bottom: 0.45rem;
-      display: block;
-    }
-
     .interest-card h3 {
       font-family: var(--serif);
       font-size: 0.95rem;
@@ -519,33 +374,28 @@
       margin: 0;
     }
 
-    /* ── Photo grid ──────────────────────────────────────── */
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.6rem;
+    /* ── Footer ─────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--divider);
+      padding: 2.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
     }
 
-    .photo-grid img {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      border-radius: 4px;
-      display: block;
+    .footer-left {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
     }
 
     /* ── Responsive ──────────────────────────────────────── */
     @media (max-width: 700px) {
-      .top-layout {
-        grid-template-columns: 1fr;
-        padding-top: 3rem;
-      }
-      .top-sidebar { border-top: 1px solid var(--divider); padding-top: 1.5rem; }
-      .sidebar-block:first-child { border-top: none; }
       h1 { font-size: 2rem; }
-      .hero { padding: 0 0 1.5rem; }
+      .hero { flex-direction: column; gap: 1.5rem; }
       .interest-grid { grid-template-columns: 1fr; }
-      .photo-grid { grid-template-columns: repeat(2, 1fr); }
       .edu-item { grid-template-columns: 1fr; }
       .edu-year { text-align: left; }
     }
@@ -563,15 +413,11 @@
 <nav>
   <div class="nav-inner">
     <span class="nav-name">Gabe Flanagin</span>
-
   </div>
 </nav>
 
 <!-- ── Page content ───────────────────────────────────── -->
 <div class="site-wrapper">
-
-<!-- ── Top layout: profile left, sidebar right ─────────── -->
-<div class="top-layout">
 
   <!-- Hero / Profile -->
   <div class="hero">
@@ -602,46 +448,44 @@
           GitHub
         </a>
       </div>
-    </div>
-  </div>
 
-  <!-- Sidebar: Research Interests + Education -->
-  <div class="top-sidebar">
+      <!-- Research Interests + Education inline below bio -->
+      <div class="hero-inline-sections">
 
-    <div class="sidebar-block" id="research">
-      <div class="section-label">Research Interests</div>
-      <div class="tags">
-        <span class="tag">PDEs</span>
-        <span class="tag">Optimization</span>
-        <span class="tag">Scientific Computing</span>
-        <span class="tag">Numerical Analysis</span>
-        <span class="tag">Geometry-Informed Modeling</span>
-      </div>
-    </div>
-
-    <div class="sidebar-block" id="education">
-      <div class="section-label">Education</div>
-      <div class="edu-list">
-        <div class="edu-item">
-          <div class="edu-year">2025 – Present</div>
-          <div class="edu-body">
-            <div class="edu-degree">M.S. in Mathematics</div>
-            <div class="edu-institution">Western Washington University, Bellingham, WA</div>
+        <div class="hero-inline-block" id="research">
+          <div class="section-label">Research Interests</div>
+          <div class="tags">
+            <span class="tag">PDEs</span>
+            <span class="tag">Optimization</span>
+            <span class="tag">Scientific Computing</span>
+            <span class="tag">Numerical Analysis</span>
+            <span class="tag">Geometry-Informed Modeling</span>
           </div>
         </div>
-        <div class="edu-item">
-          <div class="edu-year">2021 – 2025</div>
-          <div class="edu-body">
-            <div class="edu-degree">B.S. in Mathematics</div>
-            <div class="edu-institution">Western Washington University, Bellingham, WA</div>
+
+        <div class="hero-inline-block" id="education">
+          <div class="section-label">Education</div>
+          <div class="edu-list">
+            <div class="edu-item">
+              <div class="edu-year">2025 – Present</div>
+              <div class="edu-body">
+                <div class="edu-degree">M.S. in Mathematics</div>
+                <div class="edu-institution">Western Washington University, Bellingham, WA</div>
+              </div>
+            </div>
+            <div class="edu-item">
+              <div class="edu-year">2021 – 2025</div>
+              <div class="edu-body">
+                <div class="edu-degree">B.S. in Mathematics</div>
+                <div class="edu-institution">Western Washington University, Bellingham, WA</div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
-  </div>
-
-</div><!-- end .top-layout -->
+      </div><!-- end hero-inline-sections -->
+    </div><!-- end hero-info -->
+  </div><!-- end hero -->
 
 
 <!-- Ongoing Work -->
@@ -725,34 +569,12 @@
           Proved the method is applicable to a broader class of functions than previously shown and generalized semiconvexity results underlying the approach.
         </div>
         <div class="entry-links">
-          <a class="entry-link" href="senior-project-report.pdf" target="_blank" rel="noopener">PDF →</a>
+          <a class="entry-link" href="senior_project_report.pdf" target="_blank">PDF →</a>
         </div>
       </div>      
 
     </div>
   </section>
-
-  <!-- Honors & Awards -->
-  <!--
-  <section id="awards">
-    <div class="section-label">Honors & Awards</div>
-    <div class="entry-list">
-      <div class="entry">
-        <div class="entry-type">Fellowship · 2024</div>
-        <div class="entry-title">Name of Fellowship or Award</div>
-        <div class="entry-meta">Awarding Institution or Organization</div>
-      </div>
-
-      <div class="entry">
-        <div class="entry-type">Award · 2023</div>
-        <div class="entry-title">Award Name</div>
-        <div class="entry-meta">Awarding Institution or Organization</div>
-      </div>
-
-    </div>
-  </section>
-  -->
-
 
   <!-- Teaching --> 
   <section id="teaching">
@@ -776,7 +598,6 @@
 
     </div>
   </section>
-
 
 
 <!-- Hobbies & Passions -->
@@ -817,8 +638,12 @@
   </div>
 </section>
 
+  <footer>
+    <div class="footer-left">Last updated: June 2026</div>
+  </footer>
 
-<!-- ── Constellation animation ────────────────────────── -->
+</div><!-- end site-wrapper -->
+
 <script>
   const canvas = document.getElementById('constellation-canvas');
   const ctx = canvas.getContext('2d');
@@ -844,16 +669,11 @@
 
   function draw() {
     ctx.clearRect(0, 0, W, H);
-
-    // Move dots
     for (const d of dots) {
-      d.x += d.vx;
-      d.y += d.vy;
+      d.x += d.vx; d.y += d.vy;
       if (d.x < 0 || d.x > W) d.vx *= -1;
       if (d.y < 0 || d.y > H) d.vy *= -1;
     }
-
-    // Draw edges
     for (let i = 0; i < dots.length; i++) {
       for (let j = i + 1; j < dots.length; j++) {
         const dx = dots[i].x - dots[j].x;
@@ -870,15 +690,12 @@
         }
       }
     }
-
-    // Draw dots
     for (const d of dots) {
       ctx.beginPath();
       ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(196, 168, 255, 0.5)';
       ctx.fill();
     }
-
     requestAnimationFrame(draw);
   }
 
