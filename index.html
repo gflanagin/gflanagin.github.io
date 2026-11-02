@@ -343,29 +343,14 @@
       I am a graduate student at Western Washington University interested in applied mathematics.
     </p>
 
-    <section id="research">
-      <h2>Research</h2>
+    <section id="publications">
+      <h2>Publications</h2>
       <ul class="entries">
-
         <li class="entry">
-          <div class="entry-date">Jun – Aug 2026</div>
+          <div class="entry-date">Submitted</div>
           <div>
-            <div class="entry-title">Scientific Machine Learning for Cryo-Electron Tomography</div>
-            <div class="entry-meta">G-RIPS, Zuse Institute Berlin · Mentors: Noushin Hajarolasvadi, Frosina Stojanovska</div>
-            <p class="entry-desc">
-              Fine-tuned the CryoSiam deep-learning framework to segment biological structures in 3D
-              cryo-electron tomograms, which suffer from low signal-to-noise and missing-wedge
-              artifacts. Implemented a topology-preserving loss for thin, connected structures, found and fixed a failure mode in which it collapsed to zero, and ran
-              multi-GPU training on HPC clusters with Slurm.
-            </p>
-          </div>
-        </li>
-
-        <li class="entry">
-          <div class="entry-date">2026 – present</div>
-          <div>
-            <div class="entry-title">Spatial Modeling and Optimal Control of Chronic Wasting Disease</div>
-            <div class="entry-meta">Lead author, with Alex Escoto and Zhen Chao</div>
+            <div class="entry-title">A Spatial Model of Chronic Wasting Disease and the Optimal Placement of a Sight-Based Cull</div>
+            <div class="entry-meta">Gabe Flanagin, Alex Escoto, Zhen Chao · Submitted to <em>Bulletin of Mathematical Biology</em></div>
             <p class="entry-desc">
               A five-compartment (S–E–I–R–W) reaction–diffusion model of chronic wasting disease on
               terrain surfaces built from USGS elevation data, where land cover sets the carrying
@@ -380,10 +365,33 @@
               that accounting for terrain and land cover cuts the effort needed by 26–35%.
             </p>
             <div class="entry-links">
+              <a href="Flanagin_CWD_manuscript.pdf" target="_blank">Preprint (PDF)</a>
+              <a href="Flanagin_CWD_supplement.pdf" target="_blank">Supplement (PDF)</a>
               <a href="https://github.com/gflanagin/CWD_codebase" target="_blank" rel="noopener">Code</a>
             </div>
           </div>
         </li>
+        <li class="entry">
+          <div class="entry-date">2026</div>
+          <div>
+            <div class="entry-title">Rationalizing Patterns in the Cation Ordering, Geometric Distortion, and Electronic Properties of a Class of <span class="nowrap">I–V–VI₂</span> Chalcogenide Semiconductors</div>
+            <div class="entry-meta">Gabe Flanagin, Robert Berger · <em>The Journal of Physical Chemistry C</em></div>
+            <p class="entry-desc">
+              Density functional theory calculations of cation ordering and electronic properties in
+              <span class="nowrap">I–V–VI₂</span> chalcogenide semiconductors, introducing a
+              bonding-motif model that rationalizes their structural variation.
+            </p>
+            <div class="entry-links">
+              <a href="https://pubs.acs.org/doi/10.1021/acs.jpcc.5c05853" target="_blank" rel="noopener">Article</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>Projects &amp; research</h2>
+      <ul class="entries">
 
         <li class="entry">
           <div class="entry-date">2026 – present</div>
@@ -400,6 +408,36 @@
               conditions, and far-field behavior) and first- and second-kind formulations in 2D and
               3D, validated on a disk and a sphere, to compare conditioning under refinement and
               accuracy as charges approach the interface.
+            </p>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div class="entry-date">Jun – Aug 2026</div>
+          <div>
+            <div class="entry-title">Scientific Machine Learning for Cryo-Electron Tomography</div>
+            <div class="entry-meta">G-RIPS, Zuse Institute Berlin · Mentors: Noushin Hajarolasvadi, Frosina Stojanovska</div>
+            <p class="entry-desc">
+              Fine-tuned the CryoSiam deep-learning framework to segment biological structures in 3D
+              cryo-electron tomograms, which suffer from low signal-to-noise and missing-wedge
+              artifacts. Implemented a topology-preserving loss for thin, connected structures,
+              found and fixed a failure mode in which it collapsed to zero, and ran
+              multi-GPU training on HPC clusters with Slurm.
+            </p>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div class="entry-date">Spring 2026</div>
+          <div>
+            <div class="entry-title">Machine-Learning-Assisted Optimization for 2D Polygon Packing</div>
+            <div class="entry-meta">CSCI 597E course project, with D. Jackson, R. Rapoport, and W. Zuber</div>
+            <p class="entry-desc">
+              Augmented a basin-hopping / L-BFGS packing solver with a PPO-trained warm-start policy
+              and a transformer filter for pruning perturbations, trained on 274,000 optimization runs
+              (135 million iterations) generated on an HTCondor cluster. Benchmarked against
+              best-known packings: the filter reached AUC ≈ 0.80 as a classifier but worsened results
+              when used as a gate, and the warm-start matched random initialization.
             </p>
           </div>
         </li>
@@ -422,65 +460,6 @@
           </div>
         </li>
 
-        <li class="entry">
-          <div class="entry-date">2024 – 2025</div>
-          <div>
-            <div class="entry-title">First-Principles Modeling of Chalcogenide Semiconductors</div>
-            <div class="entry-meta">Advised by Robert Berger</div>
-            <p class="entry-desc">
-              Density functional theory calculations of cation ordering and electronic properties in
-              <span class="nowrap">I–V–VI₂</span> chalcogenide semiconductors, introducing a
-              bonding-motif model that rationalizes their structural variation.
-            </p>
-          </div>
-        </li>
-
-      </ul>
-    </section>
-
-    <section id="publications">
-      <h2>Publications</h2>
-      <ul class="entries">
-        <li class="entry">
-          <div class="entry-date">Submitted</div>
-          <div>
-            <div class="entry-title">A Spatial Model of Chronic Wasting Disease and the Optimal Placement of a Sight-Based Cull</div>
-            <div class="entry-meta">Gabe Flanagin, Alex Escoto, Zhen Chao · Submitted to <em>Bulletin of Mathematical Biology</em></div>
-            <div class="entry-links">
-              <a href="https://github.com/gflanagin/CWD_codebase" target="_blank" rel="noopener">Code</a>
-            </div>
-          </div>
-        </li>
-        <li class="entry">
-          <div class="entry-date">2026</div>
-          <div>
-            <div class="entry-title">Rationalizing Patterns in the Cation Ordering, Geometric Distortion, and Electronic Properties of a Class of <span class="nowrap">I–V–VI₂</span> Chalcogenide Semiconductors</div>
-            <div class="entry-meta">Gabe Flanagin, Robert Berger · <em>The Journal of Physical Chemistry C</em></div>
-            <div class="entry-links">
-              <a href="https://pubs.acs.org/doi/10.1021/acs.jpcc.5c05853" target="_blank" rel="noopener">Article</a>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <section id="projects">
-      <h2>Projects</h2>
-      <ul class="entries">
-        <li class="entry">
-          <div class="entry-date">Spring 2026</div>
-          <div>
-            <div class="entry-title">Machine-Learning-Assisted Optimization for 2D Polygon Packing</div>
-            <div class="entry-meta">CSCI 597E course project, with D. Jackson, R. Rapoport, and W. Zuber</div>
-            <p class="entry-desc">
-              Augmented a basin-hopping / L-BFGS packing solver with a PPO-trained warm-start policy
-              and a transformer filter for pruning perturbations, trained on 274,000 optimization runs
-              (135 million iterations) generated on an HTCondor cluster. Benchmarked against
-              best-known packings: the filter reached AUC ≈ 0.80 as a classifier but worsened results
-              when used as a gate, and the warm-start matched random initialization.
-            </p>
-          </div>
-        </li>
       </ul>
     </section>
 
