@@ -331,6 +331,7 @@
         <li>Optimal control &amp; optimization</li>
         <li>Numerical analysis</li>
         <li>Scientific computing</li>
+        <li>Scientific machine learning</li>
       </ul>
     </div>
   </aside>
@@ -343,18 +344,40 @@
     </p>
 
     <section id="research">
-      <h2>Current research</h2>
+      <h2>Research</h2>
       <ul class="entries">
 
         <li class="entry">
-          <div class="entry-date">In preparation</div>
+          <div class="entry-date">Jun – Aug 2026</div>
           <div>
-            <div class="entry-title">A Reaction–Diffusion Model for Chronic Wasting Disease Spread in Deer on a Topographically Realistic Landscape, with Optimal Culling Control</div>
-            <div class="entry-meta">Gabe Flanagin, Alex Escoto, Zhen Chao</div>
+            <div class="entry-title">Scientific Machine Learning for Cryo-Electron Tomography</div>
+            <div class="entry-meta">G-RIPS, Zuse Institute Berlin · Mentors: Noushin Hajarolasvadi, Frosina Stojanovska</div>
             <p class="entry-desc">
-              Modeling the spread of chronic wasting disease in deer on real terrain, where slope and
-              land cover shape how deer move. Uses optimal control to find where and when culling
-              effort is most effective.
+              Fine-tuned the CryoSiam deep-learning framework to segment biological structures in 3D
+              cryo-electron tomograms, which suffer from low signal-to-noise and missing-wedge
+              artifacts. Implemented a topology-preserving loss for thin, connected structures, found and fixed a failure mode in which it collapsed to zero, and ran
+              multi-GPU training on HPC clusters with Slurm.
+            </p>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div class="entry-date">2026 – present</div>
+          <div>
+            <div class="entry-title">Spatial Modeling and Optimal Control of Chronic Wasting Disease</div>
+            <div class="entry-meta">Lead author, with Alex Escoto and Zhen Chao</div>
+            <p class="entry-desc">
+              A five-compartment (S–E–I–R–W) reaction–diffusion model of chronic wasting disease on
+              terrain surfaces built from USGS elevation data, where land cover sets the carrying
+              capacity and slope sets an anisotropic diffusion tensor.
+            </p>
+            <p class="entry-desc">
+              We pose a PDE-constrained optimal control problem for a space- and time-dependent cull,
+              implementing the exact discrete adjoint of a surface finite element scheme in
+              FEniCSx/PETSc (verified to second order by Taylor tests) and optimizing with L-BFGS-B on
+              meshes of up to 370,000 nodes. We derive a closed-form bound on what such a cull can
+              achieve, and show that optimal effort forms a ring at the invasion’s leading edge and
+              that accounting for terrain and land cover cuts the effort needed by 26–35%.
             </p>
             <div class="entry-links">
               <a href="https://github.com/gflanagin/CWD_codebase" target="_blank" rel="noopener">Code</a>
@@ -363,14 +386,51 @@
         </li>
 
         <li class="entry">
-          <div class="entry-date">Ongoing</div>
+          <div class="entry-date">2026 – present</div>
           <div>
-            <div class="entry-title">Boundary Integral Methods for Interface Problems</div>
-            <div class="entry-meta">Advised by Zhen Chao</div>
+            <div class="entry-title">Boundary Element Methods for the Linearized Poisson–Boltzmann Equation</div>
+            <div class="entry-meta">M.S. project, advised by Zhen Chao</div>
             <p class="entry-desc">
-              Boundary integral methods for elliptic interface problems, with applications to
-              electrostatic models and PDEs on complex geometries. Current work focuses on numerical
-              implementation, validation, and analysis of interface formulations.
+              Studying the second-kind boundary integral formulation of Juffer et al. for
+              macromolecular electrostatics, including its hypersingular-kernel cancellation,
+              solvability, and conditioning.
+            </p>
+            <p class="entry-desc">
+              Implementing single- and double-layer potentials (verifying jump relations, transmission
+              conditions, and far-field behavior) and first- and second-kind formulations in 2D and
+              3D, validated on a disk and a sphere, to compare conditioning under refinement and
+              accuracy as charges approach the interface.
+            </p>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div class="entry-date">2025</div>
+          <div>
+            <div class="entry-title">Hamilton–Jacobi Equations and Max-Plus Approximation</div>
+            <div class="entry-meta">Undergraduate senior project, advised by Rick Barnard</div>
+            <p class="entry-desc">
+              Implemented a max-plus method for approximating value functions governed by
+              Hamilton–Jacobi–Bellman equations. Extended a quadratic under-approximation result from
+              C² functions to functions that are C¹ except at finitely many locally convex nonsmooth
+              points, and generalized a semiconvexity-preservation theorem for the linear–quadratic
+              regulator semigroup to every positive time step in a broader function class.
+            </p>
+            <div class="entry-links">
+              <a href="Senior_project_report.pdf" target="_blank">Report (PDF)</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div class="entry-date">2024 – 2025</div>
+          <div>
+            <div class="entry-title">First-Principles Modeling of Chalcogenide Semiconductors</div>
+            <div class="entry-meta">Advised by Robert Berger</div>
+            <p class="entry-desc">
+              Density functional theory calculations of cation ordering and electronic properties in
+              <span class="nowrap">I–V–VI₂</span> chalcogenide semiconductors, introducing a
+              bonding-motif model that rationalizes their structural variation.
             </p>
           </div>
         </li>
@@ -382,19 +442,43 @@
       <h2>Publications</h2>
       <ul class="entries">
         <li class="entry">
+          <div class="entry-date">Submitted</div>
+          <div>
+            <div class="entry-title">A Spatial Model of Chronic Wasting Disease and the Optimal Placement of a Sight-Based Cull</div>
+            <div class="entry-meta">Gabe Flanagin, Alex Escoto, Zhen Chao · Submitted to <em>Bulletin of Mathematical Biology</em></div>
+            <div class="entry-links">
+              <a href="https://github.com/gflanagin/CWD_codebase" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </li>
+        <li class="entry">
           <div class="entry-date">2026</div>
           <div>
             <div class="entry-title">Rationalizing Patterns in the Cation Ordering, Geometric Distortion, and Electronic Properties of a Class of <span class="nowrap">I–V–VI₂</span> Chalcogenide Semiconductors</div>
             <div class="entry-meta">Gabe Flanagin, Robert Berger · <em>The Journal of Physical Chemistry C</em></div>
-            <p class="entry-desc">
-              A density functional theory study of the structural and electronic properties of
-              <span class="nowrap">I–V–VI₂</span> chalcogenide semiconductors, developing a model that relates local bonding
-              motifs and electronic properties to the global geometric structure arising from
-              different cation orderings.
-            </p>
             <div class="entry-links">
               <a href="https://pubs.acs.org/doi/10.1021/acs.jpcc.5c05853" target="_blank" rel="noopener">Article</a>
             </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul class="entries">
+        <li class="entry">
+          <div class="entry-date">Spring 2026</div>
+          <div>
+            <div class="entry-title">Machine-Learning-Assisted Optimization for 2D Polygon Packing</div>
+            <div class="entry-meta">CSCI 597E course project, with D. Jackson, R. Rapoport, and W. Zuber</div>
+            <p class="entry-desc">
+              Augmented a basin-hopping / L-BFGS packing solver with a PPO-trained warm-start policy
+              and a transformer filter for pruning perturbations, trained on 274,000 optimization runs
+              (135 million iterations) generated on an HTCondor cluster. Benchmarked against
+              best-known packings: the filter reached AUC ≈ 0.80 as a classifier but worsened results
+              when used as a gate, and the warm-start matched random initialization.
+            </p>
           </div>
         </li>
       </ul>
@@ -418,26 +502,11 @@
             </div>
           </div>
         </li>
-      </ul>
-    </section>
-
-    <section id="projects">
-      <h2>Projects</h2>
-      <ul class="entries">
         <li class="entry">
           <div class="entry-date">May 2025</div>
           <div>
             <div class="entry-title">Using Max-Plus Algebra to Compute Reachability in Dynamic Systems</div>
-            <div class="entry-meta">Undergraduate senior project, advised by Rick Barnard · WWU Scholars Week</div>
-            <p class="entry-desc">
-              Studied and implemented a max-plus algebra algorithm for approximating solutions to
-              Hamilton–Jacobi–Bellman equations. Proved the method applies to a broader class of
-              functions than previously shown and generalized the semiconvexity results underlying
-              the approach.
-            </p>
-            <div class="entry-links">
-              <a href="Senior_project_report.pdf" target="_blank">Report (PDF)</a>
-            </div>
+            <div class="entry-meta">WWU Scholars Week</div>
           </div>
         </li>
       </ul>
@@ -447,8 +516,12 @@
       <h2>Teaching</h2>
       <ul class="rows">
         <li class="entry">
+          <div class="entry-date">Fall 2026</div>
+          <div><div class="entry-title">MATH 114: Precalculus I</div><div class="entry-meta">Instructor</div></div>
+        </li>
+        <li class="entry">
           <div class="entry-date">Spring 2026</div>
-          <div><div class="entry-title">MATH 115: Precalculus II</div><div class="entry-meta">Teaching assistant</div></div>
+          <div><div class="entry-title">MATH 115: Precalculus II</div><div class="entry-meta">Instructor</div></div>
         </li>
         <li class="entry">
           <div class="entry-date">Winter 2026</div>
@@ -456,7 +529,7 @@
         </li>
         <li class="entry">
           <div class="entry-date">Fall 2025</div>
-          <div><div class="entry-title">MATH 112: Functions &amp; Algebraic Methods</div><div class="entry-meta">Teaching assistant</div></div>
+          <div><div class="entry-title">MATH 112: Functions &amp; Algebraic Methods</div><div class="entry-meta">Instructor</div></div>
         </li>
       </ul>
     </section>
@@ -466,11 +539,21 @@
       <ul class="rows">
         <li class="entry">
           <div class="entry-date">2025 – present</div>
-          <div><div class="entry-title">M.S. in Mathematics</div><div class="entry-meta">Western Washington University</div></div>
+          <div><div class="entry-title">M.S. in Mathematics</div><div class="entry-meta">Western Washington University · Expected 2027</div></div>
         </li>
         <li class="entry">
           <div class="entry-date">2021 – 2025</div>
-          <div><div class="entry-title">B.S. in Mathematics</div><div class="entry-meta">Western Washington University</div></div>
+          <div><div class="entry-title">B.S. in Mathematics, Minor in Chemistry</div><div class="entry-meta">Western Washington University</div></div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="awards">
+      <h2>Awards</h2>
+      <ul class="rows">
+        <li class="entry">
+          <div class="entry-date">2026</div>
+          <div><div class="entry-title">Richard Greene Scholarship</div><div class="entry-meta">Western Washington University</div></div>
         </li>
       </ul>
     </section>
@@ -493,7 +576,7 @@
       </div>
     </section>
 
-    <footer>Last updated October 2026</footer>
+    <footer>Last updated November 2026</footer>
 
   </main>
 </div>
