@@ -389,7 +389,7 @@
     </section>
 
     <section id="projects">
-      <h2>Projects &amp; research</h2>
+      <h2>Additional research &amp; projects</h2>
       <ul class="entries">
 
         <li class="entry">
@@ -415,7 +415,7 @@
           <div class="entry-date">Jun – Aug 2026</div>
           <div>
             <div class="entry-title">Scientific Machine Learning for Cryo-Electron Tomography</div>
-            <div class="entry-meta">G-RIPS, Zuse Institute Berlin · Mentors: Noushin Hajarolasvadi, Frosina Stojanovska</div>
+            <div class="entry-meta">G-RIPS, Zuse Institute Berlin · Advised by Noushin Hajarolasvadi and Frosina Stojanovska</div>
             <p class="entry-desc">
               Fine-tuned the CryoSiam deep-learning framework to segment biological structures in 3D
               cryo-electron tomograms, which suffer from low signal-to-noise and missing-wedge
@@ -427,24 +427,9 @@
         </li>
 
         <li class="entry">
-          <div class="entry-date">Spring 2026</div>
-          <div>
-            <div class="entry-title">Machine-Learning-Assisted Optimization for 2D Polygon Packing</div>
-            <div class="entry-meta">CSCI 597E course project, with D. Jackson, R. Rapoport, and W. Zuber</div>
-            <p class="entry-desc">
-              Augmented a basin-hopping / L-BFGS packing solver with a PPO-trained warm-start policy
-              and a transformer filter for pruning perturbations, trained on 274,000 optimization runs
-              (135 million iterations) generated on an HTCondor cluster. Benchmarked against
-              best-known packings: the filter reached AUC ≈ 0.80 as a classifier but worsened results
-              when used as a gate, and the warm-start matched random initialization.
-            </p>
-          </div>
-        </li>
-
-        <li class="entry">
           <div class="entry-date">2025</div>
           <div>
-            <div class="entry-title">Hamilton–Jacobi Equations and Max-Plus Approximation</div>
+            <div class="entry-title">A Max-Plus Method for Hamilton–Jacobi–Bellman Equations</div>
             <div class="entry-meta">Undergraduate senior project, advised by Rick Barnard</div>
             <p class="entry-desc">
               Implemented a max-plus method for approximating value functions governed by
@@ -456,6 +441,22 @@
             <div class="entry-links">
               <a href="Senior_project_report.pdf" target="_blank">Report (PDF)</a>
             </div>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div class="entry-date">Spring 2026</div>
+          <div>
+            <div class="entry-title">Machine-Learning-Assisted Optimization for 2D Polygon Packing</div>
+            <div class="entry-meta">CSCI 597E course project, with D. Jackson, R. Rapoport, and W. Zuber</div>
+            <p class="entry-desc">
+              Augmented a basin-hopping / L-BFGS packing solver with a PPO-trained warm-start policy
+              and a transformer filter for pruning perturbations, trained on 274,000 optimization runs
+              (135 million iterations) generated on an HTCondor cluster. Benchmarked both against the
+              unaugmented multi-start solver: the filter classified perturbations well (AUC ≈ 0.80)
+              but, used as a gate, discarded some that led to better packings, and the warm-start
+              policy did not outperform random initialization.
+            </p>
           </div>
         </li>
 
